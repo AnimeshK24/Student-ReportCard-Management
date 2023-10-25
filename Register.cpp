@@ -25,9 +25,22 @@
         return checkPasswordAndConPassword();
     }
 
-    bool Register::checkPasswordAndConPassword()
+   
+ bool Register::checkPasswordAndConPassword()
     {
-         std::ofstream save,saveUsername, savePassword;
+        if (password == conPassword)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+int Register::saveRegisterInfo()
+    {
+       std::ofstream save, saveUsername, savePassword;
 
         save.open("Register Info.txt", std::ios::app);
         save << "\nUSERNAME: " << username;
@@ -47,16 +60,5 @@
              << "\n\n\t\tPRESS ENTER TO LOGIN." << std::endl;
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         return 0;
-    }
+}
 
-    int Register::saveRegisterInfo()
-    {
-         if (password == conPassword)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
